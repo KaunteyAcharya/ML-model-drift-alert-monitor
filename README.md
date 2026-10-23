@@ -10,6 +10,8 @@ Evidently report and a **Grafana** dashboard.
 
 Everything runs on your machine in Docker. No paid services and no data leaves your PC (except the Slack message).
 
+**Write-up:** [A quick note about this](https://kaunteyacharya.com/notes/ml-drift-alert-agent/) · more notes at [kaunteyacharya.com](https://kaunteyacharya.com)
+
 ```
  n8n schedule ──► drift-monitor (FastAPI + Evidently) ──► Postgres ◄── Grafana dashboard
        │                 │ JSON report + HTML report
