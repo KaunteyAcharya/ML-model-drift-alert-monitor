@@ -1,4 +1,4 @@
-# Model Monitoring + Drift Alert Agent
+# Model Drift Alert Monitor
 
 https://github.com/user-attachments/assets/671216f6-3152-46a9-874f-75e9d7f78147
 
@@ -76,7 +76,7 @@ docker compose ps          # wait until everything shows "healthy" / "running"
 
 ```powershell
 docker compose exec n8n n8n import:workflow --input=/workflows/drift_alert_workflow.json
-docker compose exec n8n n8n publish:workflow --id=driftAlertAgent1
+docker compose exec n8n n8n publish:workflow --id=driftAlertMonitor1
 docker compose restart n8n
 ```
 
@@ -89,7 +89,7 @@ docker compose exec drift-monitor python -m app.cli backfill --steps 12 --interv
 ```
 
 **6. Watch it work.**
-- **n8n** (http://localhost:5678): open *Model Drift Alert Agent* → **Execute workflow**. The schedule then runs every 15 minutes.
+- **n8n** (http://localhost:5678): open *Model Drift Alert Monitor* → **Execute workflow**. The schedule then runs every 15 minutes.
 - **Grafana** (http://localhost:3000, user `admin`): the *Model Drift Overview* dashboard opens on the home page.
 - **Reports** (http://localhost:8010/runs): recent runs with links to each Evidently HTML report.
 

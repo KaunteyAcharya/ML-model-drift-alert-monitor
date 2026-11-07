@@ -1,4 +1,4 @@
-# Architecture: Model Monitoring + Drift Alert Agent
+# Architecture: Model Drift Alert Monitor
 
 ## The problem
 
@@ -10,7 +10,7 @@ not just "PSI = 2.4".
 
 ## The solution
 
-An automated monitoring agent, built only from free and open-source tools and running locally in Docker:
+An automated monitoring system, built only from free and open-source tools and running locally in Docker:
 
 1. **Logs** every prediction and its eventual ground truth to PostgreSQL.
 2. **Measures** data drift, prediction drift, target drift, data quality and model performance against a
@@ -92,7 +92,7 @@ All thresholds can be changed in the n8n **Config** node without touching code.
 These runs show two things. **Drift doesn't always mean degradation:** the population shift moved almost
 everything, yet the model stayed accurate. And **degradation can hide behind small drift counts:** the
 calibration issue moved only about a quarter of the features but cost 15 accuracy points. That's why the
-agent looks at drift, quality and data-quality signals together.
+monitor looks at drift, quality and data-quality signals together.
 
 ## Tech stack and why
 
@@ -133,7 +133,7 @@ agent looks at drift, quality and data-quality signals together.
 
 ## Resume / portfolio bullets
 
-- Built a **production-style ML monitoring and drift-alert agent** from open-source tools (Evidently AI,
+- Built a **production-style ML monitoring and drift-alert system** from open-source tools (Evidently AI,
   PostgreSQL, n8n, Ollama, Grafana, Docker Compose). It detects data, prediction and target drift and
   model-quality regressions on a scheduled pipeline.
 - Implemented per-feature **K-S tests, PSI and KL divergence**, dataset-level drift share, and

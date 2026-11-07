@@ -1,4 +1,4 @@
-# Model Monitoring + Drift Alert Agent
+# Model Drift Alert Monitor
 #
 #   docker compose up -d --build            start everything
 #   docker compose logs -f drift-monitor    follow the monitor's logs
@@ -13,7 +13,7 @@
 # Ollama runs natively on your PC and is reached from the containers at
 # http://host.docker.internal:11434. (An optional Dockerised Ollama is at the bottom.)
 
-name: drift-agent
+name: drift-alert-monitor
 
 services:
   postgres:
@@ -41,7 +41,7 @@ services:
 
   drift-monitor:
     build: ./monitor
-    image: drift-agent/drift-monitor:1.0
+    image: drift-alert-monitor/drift-monitor:1.0
     restart: unless-stopped
     environment:
       MONITORING_DATABASE_URL: postgresql://monitor:${MONITOR_DB_PASSWORD}@postgres:5432/monitoring

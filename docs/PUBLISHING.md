@@ -26,7 +26,7 @@ browser window, then click Start. Close the other tabs first and hide the bookma
 
 | Time | Show | Say / caption |
 |---|---|---|
-| 0–10 s | README architecture diagram | "Local ML monitoring agent: Evidently, Postgres, n8n, Ollama, Slack, Grafana. All open source." |
+| 0–10 s | README architecture diagram | "Local ML monitoring system: Evidently, Postgres, n8n, Ollama, Slack, Grafana. All open source." |
 | 10–25 s | n8n workflow canvas → Config node, set `calibration` → **Execute workflow** | "Simulating an imaging-software recalibration in production." |
 | 25–40 s | nodes turning green; open the *Run drift check* output (`alert.reasons`) | "Evidently finds PSI > 2 on size features, and accuracy falls from 96% to 80%." |
 | 40–55 s | the Slack alert: scroll the root-cause analysis | "Llama 3.1, running locally, explains the likely cause. It never saw the answer." |
@@ -51,8 +51,8 @@ Ollama URL and model come from `$env` variables that live only in your git-ignor
 then sanitize it before replacing the repo copy:
 
 ```powershell
-python scripts/prepublish_check.py --sanitize "$HOME\Downloads\Model Drift Alert Agent.json"
-copy "$HOME\Downloads\Model Drift Alert Agent.json" n8n\workflows\drift_alert_workflow.json
+python scripts/prepublish_check.py --sanitize "$HOME\Downloads\Model Drift Alert Monitor.json"
+copy "$HOME\Downloads\Model Drift Alert Monitor.json" n8n\workflows\drift_alert_workflow.json
 ```
 
 The sanitize step removes the instance ID, pinned run data, credential references and version metadata,
@@ -75,16 +75,16 @@ git init
 git add .
 git status                  # .env and reports/ must NOT be listed
 python scripts/prepublish_check.py
-git commit -m "Model monitoring + drift alert agent (Evidently, n8n, Ollama, Postgres, Grafana)"
+git commit -m "Model monitoring + drift alert monitor (Evidently, n8n, Ollama, Postgres, Grafana)"
 git branch -M main
-git remote add origin https://github.com/<you>/model-drift-alert-agent.git
+git remote add origin https://github.com/<you>/ML-model-drift-alert-monitor.git
 git push -u origin main
 ```
 
 **Add the video:** on github.com, open `README.md` → ✏️ Edit, then drag the `.mp4` file to just under the
 title. GitHub uploads it and inserts a link that plays inline. Commit the change.
 
-Suggested repository description: *Local MLOps monitoring agent: Evidently drift detection, n8n
+Suggested repository description: *Local MLOps monitoring system: Evidently drift detection, n8n
 orchestration, Llama 3.1 root-cause summaries, Slack alerts, Grafana dashboards.*
 Suggested topics: `mlops`, `model-monitoring`, `data-drift`, `evidently`, `n8n`, `ollama`, `llm`, `grafana`, `docker`.
 

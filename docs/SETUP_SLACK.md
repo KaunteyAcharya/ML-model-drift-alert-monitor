@@ -10,7 +10,7 @@ Incoming webhooks work on Slack's free plan. It takes about 5 minutes.
 ## 2. Create a Slack app
 
 1. Go to https://api.slack.com/apps → **Create New App** → **From scratch**.
-2. App name: `Drift Alert Agent`. Pick your workspace → **Create App**.
+2. App name: `Drift Alert Monitor`. Pick your workspace → **Create App**.
 3. Optional: under *Basic Information → Display Information*, add an icon and description.
 
 ## 3. Turn on incoming webhooks
@@ -26,7 +26,7 @@ Treat the URL like a password: anyone who has it can post to your channel. It be
 
 ```powershell
 $url = "https://hooks.slack.com/services/XXX/YYY/ZZZ"
-Invoke-RestMethod -Uri $url -Method Post -ContentType 'application/json' -Body '{"text":"Hello from the drift alert agent :wave:"}'
+Invoke-RestMethod -Uri $url -Method Post -ContentType 'application/json' -Body '{"text":"Hello from the drift alert monitor :wave:"}'
 ```
 
 A reply of `ok` means the message arrived in the channel.
@@ -47,7 +47,7 @@ docker compose up -d n8n
 
 ## 6. Trigger a real alert
 
-In n8n, open **Model Drift Alert Agent** → **Config**, set `scenario` to `calibration` → **Execute workflow**.
+In n8n, open **Model Drift Alert Monitor** → **Config**, set `scenario` to `calibration` → **Execute workflow**.
 The message contains the severity, drifted-feature count, max PSI, accuracy change, why the alert fired, the
 LLM root-cause analysis, the top drifting features, and buttons that open the Evidently report and Grafana.
 Set `scenario` back to `auto` afterwards.
